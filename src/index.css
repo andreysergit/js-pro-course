@@ -1,0 +1,11 @@
+@import '~antd/dist/antd.css';
+@import './homework2/App.module.css';
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root{
+  display: flex;
+}
