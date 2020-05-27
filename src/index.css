@@ -1,5 +1,6 @@
 @import '~antd/dist/antd.css';
-@import './homework2/Clicker.module.css';
+/* @import './homework2/Clicker.module.css'; */
+@import './Classwork/style.css';
 
 * {
   margin: 0;

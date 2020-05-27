@@ -1,0 +1,32 @@
+body {
+    display: flex;
+      background: rgba(255, 255, 255, 0.932);
+      min-width: 100vh;
+      /* justify-content: center; */
+      align-items: center;
+      flex-direction: column;
+    }
+  .form_add {
+    display: flex;
+    width: 80%;
+  }
+  .items-block{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add_btn{
+    background-color: #1890ff;
+    color: #fff;
+  }
+  .link_item{
+    display: flex;
+  }
+  
+  .line_check{
+    background-color: saddlebrown;
+  }
+/* .todo_block{
+    display: flex;
+    flex-direction: column;
+} */
