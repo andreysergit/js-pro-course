@@ -22,14 +22,6 @@ export class TodoList extends React.Component {
     this.setState({ items: newItems });
   };
 
-//   checkBox = (e) => {
-//     const itemCheck = event.target;
-//     if (item.classList[0] === "li_key") {
-//       const todo = item.parentElement;
-//       todo.classList.toggle("completed");
-//     }
-//   };
-
   render() {
     return (
       <>
