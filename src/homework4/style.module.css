@@ -1,0 +1,25 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input_block{
+    width: 100%;
+}
+.input_block_form{
+    display: flex;
+    align-items: center;
+}
+.input_block_form{
+    margin-bottom: 30px;
+}
+.input_block_form :last-child{
+    margin-bottom: 0;
+}
+p{
+    width: 40%;
+    margin-bottom: 0;
+}
+input{
+    width: 60%;
+}
