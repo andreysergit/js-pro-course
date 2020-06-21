@@ -1,0 +1,10 @@
+{
+  "todos": [
+    {
+      "id": 0,
+      "task": "Купить молоко",
+      "done": true,
+      "active": true
+    }
+  ]
+}

@@ -1,24 +1,55 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Login } from "./Login";
-import { BrowserRouter } from "react-router-dom";
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Register } from "./Register";
-import { Redirect } from "./Redirect";
+import { Users } from "./Users";
+// import data from './user.json'
+import { Button } from "antd";
+import { Header } from "./Header";
+import { Home } from "./Home";
 
 export const App = () => {
+  const [users, usersState] = useState([]);
+  const [user, userState] = useState();
+
+  const addUsersData = () => {
+    usersState([...users, users[0]]);
+  };
+
+  const checkUser = (user) => {
+    const userIs = users.find((next) => {
+      return next.login === user.userLogin && next.pass === user.userPassword
+      });
+      if(userIs){
+        userState(userIs)
+      }else alert('error')
+    };
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await fetch("http://localhost:3004/users");
+      const data = await response.json();
+      usersState(data);
+    };
+    getData();
+  }, []);
+
+  const onUser= () => userState(null)
+
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/login">
-          <Login />
+    <Route render={()=><Login checkUser={checkUser}></Login>} path="/login" >
         </Route>
         <Route path="/register">
           <Register />
         </Route>
-        <Route path="/login">
-        <Redirect />
-        </Route>
+        <Redirect to="/login" />
+        <Route path='/home' render={()=><Home users={users} user={user} onUser={onUser}></Home>}></Route>
       </Switch>
+      <Header user={user} />
+      <Users users={users} />
+      <Button onClick={addUsersData}>Click</Button>
     </BrowserRouter>
-  ); 
+  );
 };
