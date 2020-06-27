@@ -1,32 +1,18 @@
-import { TodoComponent } from "./Todo";
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
+import { addTodo, getTodos, setDone, setTab } from '../Store/todosActionCreators';
+import { getTabTodos } from '../Store/todosSelectors';
+import { TodoComponent } from './Todo';
 
-const mapStateToProps = (state) => {
-  return {
-    item: state,
-  };
-};
-
-const Connect = () =>{
-  useEffect(()=>{
-    const getData = async ()=>{
-      const responce = await fetch ('http://localhost:3004/todos')
-      const data = await responce.json();
-      addTodo(data)
-    }
-  })
-}
-
-const mapDispatchToProps = (dispatch) => ({
-  add: (input) => {
-    dispatch({ type: "ADD", input });
-  },
-  delet: (id) => {
-    dispatch({ type: "DELETE", state: { id } });
-  },
-  done: (id) =>{
-    dispatch({type: 'DONE', id});
-  }
+const mapStateToProps = (state) => ({
+  todos: getTabTodos(state),
+  tab: state.tab,
 });
 
-export const Todo = connect(mapStateToProps, mapDispatchToProps)(TodoComponent);
+const actionCreators = {
+  addTodo,
+  getTodos,
+  setDone,
+  setTab,
+};
+
+export const Todo = connect(mapStateToProps, actionCreators)(TodoComponent);

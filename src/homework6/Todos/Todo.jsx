@@ -1,38 +1,20 @@
-import React, { useState } from "react";
-import "./style.css";
-import styles from "./style.module.css";
+import React, { useEffect } from 'react';
+import { TodoList } from '../Components/TodoList';
+import { AddTodo } from '../Components/TodoAdd';
+import { SelectTab } from '../Components/SelectTab';
 
-export const TodoComponent = ({ delet, add, item, done }) => {
-  const [input, setInput] = useState();
 
-  const onChange = (event) => {
-    setInput(event.target.value);
-  };
-
+export const TodoComponent = ({ todos, addTodo, getTodos, setDone, tab, setTab }) => {
+  useEffect(() => {
+    getTodos();
+  }, [getTodos]);
 
   return (
     <>
-      <div>
-        <input type="text" value={input} onChange={onChange} />
-        <button onClick={() => add(input), setInput('')} >Add Task</button>
-      </div>
-      <ul>
-        {item.map((item) => {
-          return (
-            <li
-              key={item.id}
-              className={item.done ? styles.checked : "unchecked"}
-            >
-              <input
-                type="checkbox"
-                onChange={() => done(item.id)}
-              />
-              {item.task}
-              <button onClick={() => delet(item.id)}>Delete</button>
-            </li>
-          );
-        })}
-      </ul>
+      <header>ToDo List</header>
+      <TodoList todos={todos} setDone={setDone} />
+      <AddTodo addTodo={addTodo} />
+      <SelectTab setTab={setTab} tab={tab} />
     </>
   );
 };

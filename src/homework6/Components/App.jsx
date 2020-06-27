@@ -1,13 +1,12 @@
 import React from "react";
+import { Todo } from "../Todos";
 import { Provider } from "react-redux";
-import { store } from "./Stores/store";
-import { Todo } from "./Todos/index";
-
+import { store } from "../Store/store";
 
 export const App = () => {
   return (
     <Provider store={store}>
-        <Todo />
+      <Todo />
     </Provider>
   );
 };
